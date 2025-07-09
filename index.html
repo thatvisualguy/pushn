@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- PushAlert 
-<script type="text/javascript">
-        (function(d, t) {
-                var g = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-                g.src = "https://cdn.pushalert.co/integrate_bbbfaa8171a47bb10c7582f90435bc54.js";
-                s.parentNode.insertBefore(g, s);
-        }(document, "script"));
-</script>
-<!-- End PushAlert -->-->
-	</head>
-	<body>
-		<!-- start webpushr code --> <script>(function(w,d, s, id) {if(typeof(w.webpushr)!=='undefined') return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js, fjs = d.getElementsByTagName(s)[0];js = d.createElement(s); js.id = id;js.async=1;js.src = "https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document, 'script', 'webpushr-jssdk'));webpushr('setup',{'key':'BCPDs0v7zK_jEp4cpBfto1PX2OVJqzDf2LIvGPACgi3lV3Zxk2ghtih1P6jjG94CZB3NuqnnZNOEZRuKh72-l5Y' });
-webpushr('attributes',{"Gender" : "Female", "User ID" : "874",  "E-mail" : "name@example.com"});	
-		</script><!-- end webpushr code -->
-	
-	</body>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <script>
+    (function(w, d, s, id) {
+      if (typeof(w.webpushr) !== 'undefined') return;
+      w.webpushr = w.webpushr || function() {
+        (w.webpushr.q = w.webpushr.q || []).push(arguments)
+      };
+      var js, fjs = d.getElementsByTagName(s)[0];
+      js = d.createElement(s);
+      js.id = id;
+      js.async = 1;
+      js.src = "https://cdn.webpushr.com/app.min.js";
+      fjs.parentNode.appendChild(js);
+    }(window, document, 'script', 'webpushr-jssdk'));
+
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        "E-mail": params.get("email") || "not_provided@example.com"
+      };
+    }
+
+    const dynamicAttributes = getQueryParams();
+
+    // Wait for webpushr to load before setting attributes
+    window.webpushr = window.webpushr || function() {
+      (window.webpushr.q = window.webpushr.q || []).push(arguments);
+    };
+
+    webpushr('setup', {
+      key: 'BCPDs0v7zK_jEp4cpBfto1PX2OVJqzDf2LIvGPACgi3lV3Zxk2ghtih1P6jjG94CZB3NuqnnZNOEZRuKh72-l5Y'
+    });
+
+    webpushr('attributes', dynamicAttributes);
+  </script>
+</body>
 </html>
